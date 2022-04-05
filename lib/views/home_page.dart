@@ -1,10 +1,9 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:notes/views/email_verify_view.dart';
 import 'package:notes/views/login_view.dart';
+import 'package:notes/views/notes_view.dart';
 
 import '../firebase_options.dart';
 
@@ -24,8 +23,9 @@ class HomePage extends StatelessWidget {
               return const LoginView();
             } else if (!currentUser.emailVerified) {
               return const EmailVerifyView();
+            } else {
+              return const NotesView();
             }
-            return const Text('Hello');
           default:
             return const CircularProgressIndicator();
         }

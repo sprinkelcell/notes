@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:notes/firebase_options.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -57,10 +55,10 @@ class _LoginViewState extends State<LoginView> {
                   final userCredential = await FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: email, password: password);
-                  print(userCredential);
+                  log(userCredential.toString());
                 } on FirebaseAuthException catch (e) {
                   if (e.code == "user-not-found") {
-                    print("User does not exist");
+                    log("User does not exist");
                   } else {
                     log(e.toString());
                   }
